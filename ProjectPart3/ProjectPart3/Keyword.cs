@@ -11,11 +11,15 @@ namespace ProjectPart3
 
        public Keyword(string p)
        {
+           if(String.IsNullOrEmpty(p){
+               this.word = null;
+               return;
+           }
            this.word = p.ToLowerInvariant();
        }
 
 
-        public object getWord()
+        public string getWord()
        {
            return this.word;
        }
