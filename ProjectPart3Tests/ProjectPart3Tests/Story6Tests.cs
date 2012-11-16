@@ -22,8 +22,9 @@ namespace ProjectPart3Tests
             Paper p = new Paper("abc", "def", "ghi", 1234);
             p.addKeywords(new List<Keyword>() {new Keyword("test"), new Keyword("test2")});
             Paper p2 = new Paper("abcddd", "def", "ghi", 1234);
-            p.addKeywords(new List<Keyword>() {new Keyword("test"), new Keyword("test2")});
-            PaperList pl = new PaperList(new List<Paper>() { p, p2 });
+            p2.addKeywords(new List<Keyword>() {new Keyword("test"), new Keyword("test2")});
+            PaperList pl = new PaperList(p);
+            pl.addPaper(p2);
             int expected = 2;
             int actual = pl.searchRelationFrequency("test", "test2");
             Assert.AreEqual(expected, actual);
@@ -36,7 +37,7 @@ namespace ProjectPart3Tests
             Paper p = new Paper("abc", "def", "ghi", 1234);
             p.addKeywords(new List<Keyword>() { new Keyword("test"), new Keyword("test2") });
             Paper p2 = new Paper("abcddd", "def", "ghi", 1234);
-            p.addKeywords(new List<Keyword>() { new Keyword("test"), new Keyword("test2") });
+            p2.addKeywords(new List<Keyword>() { new Keyword("test"), new Keyword("test2") });
             PaperList pl = new PaperList(new List<Paper>() { p, p2 });
             int expected = 2;
             int actual = pl.searchRelationFrequency("Test", "tESt2");

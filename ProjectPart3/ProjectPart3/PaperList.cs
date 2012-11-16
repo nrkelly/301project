@@ -61,6 +61,15 @@ namespace ProjectPart3
             return null;
         }
 
+        public Paper getPaper(int i)
+        {
+            if (this.list.Count > i)
+            {
+                return this.list[i];
+            }
+            return null;
+        }
+
         public int searchRelationFrequency(string p, string p_2)
         {
             if (String.IsNullOrEmpty(p) || String.IsNullOrEmpty(p_2))
@@ -71,15 +80,22 @@ namespace ProjectPart3
             {
                 return -1;
             }
-            Paper[] array = new Paper[this.list.Count];
 
+            bool hasP = false;
+            bool hasP2 = false;
             int bothCount = 0;
-            this.list.CopyTo(array);
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < this.list.Count; i++)
             {
-                List<Keyword> words = array[i].getKeywords();
-                if ((words.Contains(new Keyword(p))) && (words.Contains(new Keyword(p_2))))
-                {
+                List<Keyword> words = this.getPaper(i).getKeywords();
+                for(int j = 0; j < words.Count; j++){
+                    if(words[j].getWord().Equals(p.ToLowerInvariant().Trim())){
+                        hasP = true;
+                    }
+                    else if(words[j].getWord().Equals(p_2.ToLowerInvariant().Trim())){
+                        hasP2 = true;
+                    }
+                }
+                if(hasP && hasP2){
                     bothCount++;
                 }
             }

@@ -15,7 +15,7 @@ namespace ProjectPart3
                this.word = null;
                return;
            }
-           this.word = p.ToLowerInvariant();
+           else this.word = p.ToLowerInvariant().Trim();
        }
 
 
