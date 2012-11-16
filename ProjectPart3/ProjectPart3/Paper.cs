@@ -21,7 +21,7 @@ namespace ProjectPart3
         private string abst;
         private int year;
 
-        private List<Keyword> words;
+        private List<Keyword> words = new List<Keyword>();
 
         public Paper(string p, string p_2, string p_3, int p_4)
         {
@@ -34,23 +34,49 @@ namespace ProjectPart3
 
         public void addKeywords(List<Keyword> list)
         {
-            this.words = list;
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i].getWord() != null)
+                {
+                    this.addKeyword(list[i]);
+                }
+            }
         }
 
         public List<Keyword> getKeywords()
         {
+            if (this.words.Count == 0)
+            {
+                return null;
+            }
             return this.words;
         }
 
         public void addKeyword(Keyword keyword)
         {
+            if(String.IsNullOrEmpty(keyword.getWord())){
+                return;
+            }
             for(int i = 0; i < this.words.Count; i++){
                 if (this.words[i].getWord() == keyword.getWord())
                 {
                     return;
                 }
             }
+            if (this.words == null)
+            {
+                this.words = new List<Keyword>() { keyword };
+                return;
+            }
             this.words.Add(keyword);
         }
+
+        public string getName()
+        {
+            return this.name;
+        }
+
+
+
     }
 }

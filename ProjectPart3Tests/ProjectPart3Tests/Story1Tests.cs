@@ -21,7 +21,7 @@ namespace ProjectPart3Tests
             PaperList actual = new PaperList();
             actual.addPaper(p);
             Paper expected = new Paper("not winning", "sean boyd", "teaches you how to lose", 1535);
-            Assert.AreEqual(expected, actual.getPaper("not winning"));
+            Assert.AreEqual(expected.getName(), actual.getPaper("not winning").getName());
 
         }
 
@@ -31,10 +31,10 @@ namespace ProjectPart3Tests
             Paper p = new Paper("not winning", "sean boyd", "teaches you how to lose", 1535);
             Paper p1 = new Paper("test", "test mcgee", "how to test", 2012);
             PaperList actual = new PaperList();
-            actual.addPaper(p);
             actual.addPaper(p1);
+            actual.addPaper(p);
             Paper expected = new Paper("not winning", "sean boyd", "teaches you how to lose", 1535);
-            Assert.AreEqual(expected, actual.getPaper("not winning"));
+            Assert.AreEqual(expected.getName(), actual.getPaper("not winning").getName());
         }
 
         [TestMethod]
@@ -43,7 +43,8 @@ namespace ProjectPart3Tests
             PaperList expected = new PaperList(new Paper("testing", "dovahkiin", "this is a test", 500));
             PaperList actual = new PaperList(new Paper("testing", "dovahkiin", "this is a test", 500));
             actual.addPaper(new Paper("testing", "dovahkiin", "this is a test", 500));
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected.getList()[0].getName(), actual.getList()[0].getName());
+            Assert.IsTrue(actual.getList().Count == 1);
         }
 
         [TestMethod]
@@ -52,7 +53,8 @@ namespace ProjectPart3Tests
             PaperList expected = new PaperList( new Paper("this is", "a valid", "paper", 2000) );
             PaperList actual = new PaperList( new Paper("this is", "a valid", "paper", 2000) );
             actual.addPaper(new Paper("", "", "", -20));
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected.getList()[0].getName(), actual.getList()[0].getName());
+            Assert.IsTrue(actual.getList().Count == 1);
         }
  
     }

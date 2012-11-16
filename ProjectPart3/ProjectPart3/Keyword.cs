@@ -11,7 +11,7 @@ namespace ProjectPart3
 
        public Keyword(string p)
        {
-           if(String.IsNullOrEmpty(p){
+           if(String.IsNullOrEmpty(p)){
                this.word = null;
                return;
            }

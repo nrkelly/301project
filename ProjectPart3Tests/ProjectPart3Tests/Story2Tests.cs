@@ -40,9 +40,11 @@ namespace ProjectPart3Tests
             Paper p = new Paper("winning", "nolan kelly", "teaches you how to win", 1337);
             List<Keyword> list = new List<Keyword>() { new Keyword("success"), new Keyword("awesomeness") };
             p.addKeywords(list);
-            p.addKeyword(new Keyword("success"));
+            p.addKeywords(list);
             List<Keyword> actual = p.getKeywords();
-            Assert.AreEqual(list, actual);
+            Assert.AreEqual(list[0], actual[0]);
+            Assert.AreEqual(list[1], actual[1]);
+            Assert.IsTrue(actual.Count == 2);
         }
 
         [TestMethod]
@@ -53,7 +55,9 @@ namespace ProjectPart3Tests
             p.addKeywords(list);
             p.addKeyword(new Keyword("success"));
             List<Keyword> actual = p.getKeywords();
-            Assert.AreEqual(list, actual);
+            Assert.AreEqual(list[0], actual[0]);
+            Assert.AreEqual(list[1], actual[1]);
+            Assert.IsTrue(actual.Count == 2);
         }
 
         [TestMethod]
