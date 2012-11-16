@@ -61,14 +61,6 @@ namespace ProjectPart3
             return null;
         }
 
-        public Paper getPaper(int i)
-        {
-            if (this.list.Count > i)
-            {
-                return this.list[i];
-            }
-            return null;
-        }
 
         public int searchRelationFrequency(string p, string p_2)
         {
@@ -86,7 +78,9 @@ namespace ProjectPart3
             int bothCount = 0;
             for (int i = 0; i < this.list.Count; i++)
             {
-                List<Keyword> words = this.getPaper(i).getKeywords();
+                hasP = false;
+                hasP2 = false;
+                List<Keyword> words = this.list[i].getKeywords();
                 for(int j = 0; j < words.Count; j++){
                     if(words[j].getWord().Equals(p.ToLowerInvariant().Trim())){
                         hasP = true;
